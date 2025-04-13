@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>صفحتي</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .task {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .task img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .note {
+      font-size: 17px;
+      color: #555;
+      margin: 10px 0 20px;
+    }
+
+    .referral {
+      margin-top: 15px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .referral a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .referral a:hover {
+      text-decoration: underline;
+    }
+
+    .warning {
+      margin-top: 30px;
+      font-size: 15px;
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>مرحباً، أنا أحمد</h1>
+    <p>مطور مبتدئ مهتم بتصميم المواقع وتجربة المستخدم.</p>
+    <p class="note">نفّذ المهام للوصول إلى رابط تحميل الألعاب</p>
+
+    <div id="taskButtons">
+      <button onclick="toggleTask('task1')">ابدأ مهمة 1</button>
+      <button onclick="toggleTask('task2')">ابدأ مهمة 2</button>
+    </div>
+
+    <!-- المهمة 1 -->
+    <div class="task" id="task1">
+      <img src="https://i.imgur.com/PSHwCnk.jpeg" alt="صورة المهمة" />
+      <h2>مهمة 1</h2>
+      <p>قم بتحميل وكسب</p>
+      <div class="referral">
+        <p>تأكد من معرف الإحالة: <strong>GRO_14352_3J57M</strong></p>
+        <p>
+          رابط الإحالة:
+          <a href="https://www.binance.com/referral/earn-together/refertoearn2000usdc/claim?hl=ar&ref=GRO_14352_3J57M&utm_source=referralmode" target="_blank">
+            اضغط هنا لزيارة الرابط
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- المهمة 2 -->
+    <div class="task" id="task2">
+      <h2>مهمة 2</h2>
+      <p>قم بتسجيل الدخول داخل التطبيق فقط</p>
+      <div class="referral">
+        <p>
+          رابط المهمة:
+          <a href="https://play.google.com/store/apps/details?id=com.lootplay.app" target="_blank">
+            تحميل تطبيق Loot Play من متجر Google Play
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <p class="warning">يمكنك اختيار مهمة واحدة فقط للذهاب إلى صفحة تحميل الألعاب</p>
+  </div>
+
+  <script>
+    let currentTask = null;
+    let clickCount = 0;
+
+    function toggleTask(taskId) {
+      const task1 = document.getElementById("task1");
+      const task2 = document.getElementById("task2");
+
+      if (currentTask === taskId) {
+        clickCount++;
+        if (clickCount === 2) {
+          task1.style.display = "none";
+          task2.style.display = "none";
+          currentTask = null;
+          clickCount = 0;
+          return;
+        } else {
+          // إغلاق المهمة الحالية
+          document.getElementById(taskId).style.display = "none";
+          return;
+        }
+      }
+
+      // فتح المهمة الجديدة
+      task1.style.display = "none";
+      task2.style.display = "none";
+      document.getElementById(taskId).style.display = "block";
+      currentTask = taskId;
+      clickCount = 1;
+    }
+  </script>
+
+</body>
+</html>
